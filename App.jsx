@@ -1,23 +1,9 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
-import AppBar from './src/components/AppBar';
-import RentalBookList from './src/components/RentalBookList';
-import CircleButton from './src/components/CricleButton';
+import BookDetailScreen from './src/screens/BookDetailScreen';
+import RentalBookScreen from './src/screens/RentalBookScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <AppBar />
-      <RentalBookList />
-      <CircleButton>本を探す</CircleButton>
-    </View>
+    <BookDetailScreen />
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-
-});
