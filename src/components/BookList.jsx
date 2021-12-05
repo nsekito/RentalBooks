@@ -4,7 +4,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function RentalBookList() {
+export default function BookList() {
   const navigation = useNavigation();
   return (
     <View>
@@ -13,15 +13,15 @@ export default function RentalBookList() {
         onPress={() => { navigation.navigate('BookDetail'); }}
       >
         <View>
-          <Text style={styles.rentalBookListItemTitle}>BookNameA</Text>
+          <Text style={styles.rentalBookListItemTitle}>BookNameB</Text>
         </View>
         <View style={styles.rentalBookListItemDetail}>
           <View>
-            <Text>レンタル日</Text>
+            <Text>貸出可能</Text>
             <Text style={styles.rentalBookListItemDate}>YYYY/MM/DD</Text>
           </View>
           <View>
-            <Text>返却日</Text>
+            <Text>○○日</Text>
             <Text style={styles.rentalBookListItemDate}>YYYY/MM/DD</Text>
           </View>
         </View>

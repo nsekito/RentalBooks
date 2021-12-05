@@ -2,13 +2,12 @@ import React from 'react';
 import {
   View, Text, StyleSheet, ScrollView,
 } from 'react-native';
-import AppBar from '../components/AppBar';
 import CircleButton from '../components/CricleButton';
 
-export default function BookDetailScreen() {
+export default function BookDetailScreen(props) {
+  const { navigation } = props;
   return (
     <View style={styles.container}>
-      <AppBar />
       <View style={styles.bookHeader}>
         <Text style={styles.bookTitle}>BookA</Text>
         <Text style={styles.bookDate}>yyyy/mm/dd</Text>
@@ -22,7 +21,7 @@ export default function BookDetailScreen() {
           ほんの詳細ほんの詳細ほんの詳細ほんの詳細
         </Text>
       </ScrollView>
-      <CircleButton style={{ top: 160, bottom: 'auto' }}>本を借りる</CircleButton>
+      <CircleButton style={{ top: 60, bottom: 'auto' }} onPress={() => { navigation.navigate('RentalBook'); }}>本を借りる</CircleButton>
     </View>
   );
 }
