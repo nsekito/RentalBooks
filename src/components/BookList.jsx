@@ -3,32 +3,49 @@ import {
   View, Text, StyleSheet, TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import {
+  shape, string, arrayOf,
+} from 'prop-types';
 
-export default function BookList() {
+export default function BookList(props) {
+  const { books } = props;
   const navigation = useNavigation();
   return (
     <View>
-      <TouchableOpacity
-        style={styles.rentalBookListItem}
-        onPress={() => { navigation.navigate('BookDetail'); }}
-      >
-        <View>
-          <Text style={styles.rentalBookListItemTitle}>BookNameB</Text>
-        </View>
-        <View style={styles.rentalBookListItemDetail}>
+      {books.map((book) => (
+        <TouchableOpacity
+          key={book.id}
+          style={styles.rentalBookListItem}
+          onPress={() => { navigation.navigate('BookDetail', { id: book.id }); }}
+        >
           <View>
-            <Text>貸出可能</Text>
-            <Text style={styles.rentalBookListItemDate}>YYYY/MM/DD</Text>
+            <Text style={styles.rentalBookListItemTitle}>{book.title}</Text>
           </View>
-          <View>
-            <Text>○○日</Text>
-            <Text style={styles.rentalBookListItemDate}>YYYY/MM/DD</Text>
+          <View style={styles.rentalBookListItemDetail}>
+            <View>
+              <Text>レンタル日</Text>
+              <Text style={styles.rentalBookListItemDate}>{book.rentalDate}</Text>
+            </View>
+            <View>
+              <Text>返却日</Text>
+              <Text style={styles.rentalBookListItemDate}>{book.returnDate}</Text>
+            </View>
           </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      ))}
     </View>
   );
 }
+
+BookList.propTypes = {
+  books: arrayOf(shape({
+    title: string,
+    description: string,
+    rentalDate: string,
+    returnDate: string,
+    rentalUser: string,
+  })).isRequired,
+};
 
 const styles = StyleSheet.create({
   rentalBookListItem: {

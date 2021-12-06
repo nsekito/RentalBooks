@@ -1,4 +1,5 @@
 import React from 'react';
+import { LogBox } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import firebase from 'firebase';
@@ -10,6 +11,7 @@ import SignUpScreen from './src/screens/SignUpScreen';
 import BookListScreen from './src/screens/BookListScreen';
 
 const Stack = createStackNavigator();
+LogBox.ignoreLogs(['Setting a timer']);
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAj88R4XABXn36vRetiUeDyWZRJlWK2GAI',
@@ -20,6 +22,9 @@ const firebaseConfig = {
   messagingSenderId: '643405544870',
   appId: '1:643405544870:web:5ae8bcaeba53960ba6e367',
 };
+
+require('firebase/firestore');
+
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
